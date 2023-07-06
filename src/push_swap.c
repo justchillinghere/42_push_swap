@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/05 18:58:43 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:57:36 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 int main (int argc, char **argv)
 {
-	// t_node	*node_a;
-	// t_node	*node_b;
+	t_stack *stack_a;
 
-	// node_a = NULL;
-	// node_b = NULL;
+	stack_a = create_stack();
 	if (argc == 1 || !argv[1][0])
 		return (1);
 	if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv = ft_split(argv[1], ' '); // convert "1 2 3" to "1", "2", "3"
 	else
 		argv++;
-	ft_printf("Hello_world");
-	// init_stack(node_a, argv);
-	// stack_free(node_a);
-	// stack_free(node_b);
+	while (*argv)
+		push_stack(stack_a, ft_atoi(*argv++));
+	print_stack(stack_a);
+	free_stack(stack_a);
 	return (0);
 }

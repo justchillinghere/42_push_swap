@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/05 18:16:53 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:57:56 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,22 @@
 # include "libft.h"
 
 
-typedef struct s_node 
+typedef struct s_stack_node 
 {
 	int data;
-	struct s_node *next;
-	struct s_node *prev;
+	struct s_stack_node *next;
 } 	t_node;
 
+typedef struct s_stack
+{
+	t_node *top;
+}	t_stack;
+
+t_stack *create_stack();
+t_node *create_node(int num);
+void	free_stack(t_stack *stack);
+int 	pop_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
+void	push_stack(t_stack *stack, int num);
 
 #endif

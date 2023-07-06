@@ -15,10 +15,14 @@ HEADERS := $(addprefix $(INC_DIR)/, \
 				)
 
 vpath %.c \
-	$(SRC_DIR)
+	$(SRC_DIR) \
+	$(INC_DIR)
 
-SRCS := \
-		$(SRC_DIR)/push_swap.c
+SRCS := $(addprefix $(SRC_DIR)/, \
+		push_swap.c \
+		stack.c \
+		)
+
 OBJS := $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 CC := cc
@@ -27,7 +31,7 @@ CFLAGS := -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(LIBFT_FILE) $(HEADERS) $(OBJS)
-	$(CC) $(CFLAGS) -I $(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) -I$(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(OBJS)
 
 $(OBJS_DIR)/%.o : %.c
 	$(info $(shell mkdir -p $(OBJS_DIR)))
