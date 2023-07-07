@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/06 20:57:56 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:46:45 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	free_stack(t_stack *stack);
 int 	pop_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	push_stack(t_stack *stack, int num);
+int		count_argc(char **argv);
 
 #endif

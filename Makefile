@@ -21,6 +21,7 @@ vpath %.c \
 SRCS := $(addprefix $(SRC_DIR)/, \
 		push_swap.c \
 		stack.c \
+		utils.c \
 		)
 
 OBJS := $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
