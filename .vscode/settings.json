@@ -1,7 +1,8 @@
 {
 	"files.associations": {
 		"push_swap.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"test_push_swap.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

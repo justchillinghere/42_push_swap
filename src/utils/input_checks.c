@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   input_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/11 13:22:24 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/07 12:43:23 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/07 15:38:30 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main (int argc, char **argv)
+int	count_argc(char **argv)
 {
-	t_stack *stack_a;
+	int	 i;
 
-	stack_a = NULL;
-	if (argc == 1 || !argv[1][0])
-		return (1);
+	i = 0;
+	while(argv[i])
+		i++;
+	return (i);
+}
+
+int	unify_args(int argc, char **argv)
+{
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' '); // convert "1 2 3" to "1", "2", "3"
@@ -29,13 +34,5 @@ int main (int argc, char **argv)
 		argv++;
 		argc--;
 	}
-	stack_a = create_stack();
-	while (argc)
-	{
-		push_stack(stack_a, ft_atoi(argv[argc - 1]));
-		argc--;
-	}
-	print_stack(stack_a);
-	free_stack(stack_a);
-	return (0);
+	return (argc);
 }
