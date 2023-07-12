@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:10:20 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/12 12:40:21 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:49:43 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,21 @@ void	rotate_stack(t_stack *stack)
 	stack->bottom->next = NULL;
 }
 
-void	reverse_rotate_stack(t_stack *stack)
+void ra(t_stack *a)
 {
-	t_node	*new_top;
-	t_node	*current_node;
+	rotate_stack(a);
+	printf("ra\n");
+}
 
-	if (is_stack_empty(stack) || stack->top->next == NULL)
-		return;
-	current_node = stack->top;
-	while (current_node->next->next)
-		current_node = current_node->next;
-	new_top = current_node->next;
-	current_node->next = NULL;
-	stack->bottom = current_node;
-	new_top->next = stack->top;
-	stack->top = new_top;
+void rb(t_stack *b)
+{
+	rotate_stack(b);
+	printf("rb\n");
+}
+
+void rr(t_stack *a, t_stack *b)
+{
+	rotate_stack(a);
+	rotate_stack(b);
+	printf("rr\n");
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swaps.c                                            :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/11 15:10:08 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:14:23 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,21 @@ void	swap_stack(t_stack *stack)
 	stack->top = second;
 }
 
+void	sa(t_stack *a)
+{
+	swap_stack(a);
+	printf("sa\n");
+}
+
+void	sb(t_stack *b)
+{
+	swap_stack(b);
+	printf("sb\n");
+}
+
+void ss(t_stack *a, t_stack *b)
+{
+	swap_stack(a);
+	swap_stack(b);
+	printf("ss\n");
+}
