@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:41:53 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/11 13:44:55 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:38:51 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 
 void 	test_stack_impl();
 void	test_swap();
+void	test_rotate();
+void	test_reverse_rotate();
 
 #endif

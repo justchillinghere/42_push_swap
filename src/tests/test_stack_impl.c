@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:41:22 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/07 17:45:25 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:06:31 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void test_stack_impl()
     push_stack(stack, 30);
     printf("Stack after pushing: \n");
     print_stack(stack);
+
+	// Test bottom element
+	printf("Stack bottom: %d\n", stack->bottom->data);
+
+	// Test stack_size
+	printf("Stack size: %d\n", get_stack_size(stack));
 
     // Test pop_stack function
     int popped_val = pop_stack(stack);

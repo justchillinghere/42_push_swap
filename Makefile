@@ -28,13 +28,15 @@ SRC_STACK_DIR := $(SRC_DIR)/stack_funcs
 
 SRC_STACK := $(addprefix $(SRC_STACK_DIR)/, \
 				stack_implementation.c	\
-				swaps.c \
+				swap.c \
+				rotate.c \
 				)
 
 SRC_TESTS_DIR := $(SRC_DIR)/tests
 SRC_TESTS := $(addprefix $(SRC_TESTS_DIR)/, \
 				test_stack_impl.c \
 				test_stack_swap.c \
+				test_rotate.c \
 				test.c \
 				)
 

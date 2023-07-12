@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 16:08:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/12 12:38:47 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/11 15:10:08 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "test_push_swap.h"
 
-int main()
+void	swap_stack(t_stack *stack)
 {
-	// ft_printf("### TEST 1 ###\n");
-	// test_stack_impl();
-	// ft_printf("### TEST 2 ###\n");
-	// test_swap();
-	// ft_printf("### TEST 3 ###\n");
-	// test_rotate();
-	ft_printf("### TEST 4 ###\n");
-	test_reverse_rotate();
+	// Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
+	t_node	*first;
+	t_node	*second;
 
-
-
-    return 0;
+	first = stack->top;
+	second = stack->top->next;
+	if(!(stack->top) || !(stack->top->next))
+		return;
+	first->next = second->next;
+	second->next = stack->top;
+	stack->top = second;
 }
+

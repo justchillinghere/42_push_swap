@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swaps.c                                            :+:      :+:    :+:   */
+/*   push_ab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/07 17:39:58 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/12 12:43:41 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/12 13:03:35 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_stack(t_stack *stack)
+void	push_from_stack_to_stack(t_stack *from, t_stack *to)
 {
-	// Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
-	t_node	*first;
-	t_node	*second;
+	t_node	tmp_node;
 
-	first = stack->top;
-	second = stack->top->next;
-	if(!(stack->top) || !(stack->top->next))
+	if(is_stack_empty(from))
 		return;
-	first->next = second->next;
-	second->next = stack->top;
-	stack->top = second;
+	tmp_node = from->top;
+	tmp_node->next = to->top;
+	to->top = tmp_node;
+
+	from->top = from->top->next;
 }
