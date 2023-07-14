@@ -38,6 +38,12 @@ At the beginning of the program, The stack a contains a random amount of negativ
 
 - [ ] Check for non-digit/negative numbers/space characters
 - [ ] Check for non-integer values
+- [ ] Check for duplicate values
+
+## Test coverage
+
+- [ ] Integrate criterion testing framework
+- [ ] Get test coverage of functions
 
 ## Algorithm
 
@@ -50,8 +56,10 @@ Then, there're sevearal cases to consider:
 - [ ] 500 numbers and less
 
 ### 3 numbers and less
+
 If there're 3 numbers or less, the algorithm is pretty simple:
 
-1. Compare top with bottom. If top is bigger than bottom, swap them.
-2. Compare top with middle. If top is bigger than middle, swap them.
-
+1. Find max value in the stack (TODO: parse max value to the structure field later)
+2. If max value on top -> rotate to bottom
+3. If max value in the middle -> reverse rotate bottom element to the top of the stack
+4. Swap first two elements if they are unordered

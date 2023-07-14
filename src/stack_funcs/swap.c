@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/12 14:14:23 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:57:43 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void	swap_stack(t_stack *stack)
 void	sa(t_stack *a)
 {
 	swap_stack(a);
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
 	swap_stack(b);
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void ss(t_stack *a, t_stack *b)
 {
 	swap_stack(a);
 	swap_stack(b);
-	printf("ss\n");
+	ft_printf("ss\n");
 }

@@ -9,6 +9,8 @@ LIBFT_FILE = $(LIBFT_DIR)/$(LIBFT)
 LIBFT_INC_FLAGS = -I$(LIBFT_DIR)/include -I$(LIBFT_DIR)/libft/include
 LIBFT_LIB_FLAGS = -L$(LIBFT_DIR) -lftprintf
 
+CRITERION_FLAGS := -I/opt/homebrew/include/criterion -L/opt/homebrew/lib -lcriterion
+
 SRC_DIR := src
 OBJS_DIR := obj
 INC_DIR := include
@@ -34,9 +36,6 @@ SRC_STACK := $(addprefix $(SRC_STACK_DIR)/, \
 
 SRC_TESTS_DIR := $(SRC_DIR)/tests
 SRC_TESTS := $(addprefix $(SRC_TESTS_DIR)/, \
-				test_stack_impl.c \
-				test_stack_swap.c \
-				test_rotate.c \
 				test.c \
 				)
 
@@ -84,7 +83,7 @@ $(LIBFT)_fclean:
 bonus: $(NAME)
 
 test : $(NAME) 
-	$(CC) $(CFLAGS) -I$(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(OBJS) $(TEST_OBJ) -o test.out
+	$(CC) $(CFLAGS) -I$(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(CRITERION_FLAGS) $(OBJS) $(TEST_OBJ) -o test.out
 	@printf "TestResult:\n"
 	@./test.out
 	@rm test.out
