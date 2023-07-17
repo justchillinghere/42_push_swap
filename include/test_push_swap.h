@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:41:53 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/14 17:49:32 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:50:41 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 # include "criterion/criterion.h"
 # include "criterion/new/assert.h"
 
-void 	test_stack_impl();
-void	test_swap();
-void	test_rotate();
-void	test_reverse_rotate();
+static t_stack *stack = NULL;
 
 #endif

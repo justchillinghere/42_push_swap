@@ -32,11 +32,15 @@ SRC_STACK := $(addprefix $(SRC_STACK_DIR)/, \
 				stack_implementation.c	\
 				swap.c \
 				rotate.c \
+				rev_rotate.c \
+				push_ab.c \
 				)
 
 SRC_TESTS_DIR := $(SRC_DIR)/tests
 SRC_TESTS := $(addprefix $(SRC_TESTS_DIR)/, \
-				test.c \
+				test_stack_impl.c \
+				test_stack_rotate.c \
+				test_stack_swap.c \
 				)
 
 vpath %.c \

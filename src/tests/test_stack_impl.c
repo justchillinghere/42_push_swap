@@ -1,50 +1,68 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   test_stack_impl.c                                  :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2023/07/07 17:41:22 by luchitel          #+#    #+#             */
-// /*   Updated: 2023/07/14 17:17:29 by luchitel         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_stack_impl.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/07 16:08:05 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/17 17:49:58 by luchitel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include "test_push_swap.h"
+#include "push_swap.h"
+#include "test_push_swap.h"
 
-// void test_stack_impl()
-// {
-//     // Test create_node function
-//     t_node *node = create_node(5);
-//     printf("Node data: %d\n", node->data);
-//     printf("Node next: %p\n", node->next);
+static void	setup_stack(void)
+{
+	stack = create_stack();
+}
 
-//     // Test create_stack function
-//     t_stack *stack = create_stack();
-//     printf("Stack top: %p\n", stack->top);
+static void	teardown_stack(void)
+{
+	free_stack(stack);
+}
 
-//     // Test push_stack function
-//     push_stack(stack, 10);
-//     push_stack(stack, 20);
-//     push_stack(stack, 30);
-//     printf("Stack after pushing: \n");
-//     print_stack(stack);
+TestSuite(stack_implementation, .init=setup_stack, .fini=teardown_stack);
 
-// 	// Test bottom element
-// 	printf("Stack bottom: %d\n", stack->bottom->data);
+Test(stack_implementation, test_push, .description="Testing push operation on stack")
+{
+	push_stack(stack, 10);
+	cr_assert(eq(stack->top->data, 10), "Push failed. Top pointer is incorrect");
+	cr_assert(eq(stack->bottom->data, 10), "Push failed. Bottom pointer is incorrect");
+	
+	push_stack(stack, 20);
+	cr_assert(eq(stack->top->data, 20), "Push failed. Top pointer is incorrect");
+	cr_assert(eq(stack->bottom->data, 10), "Push failed. Bottom pointer is incorrect");
+	
+	push_stack(stack, 30);
+	cr_assert(eq(stack->top->data, 30), "Push failed. Top pointer is incorrect");
+	cr_assert(eq(stack->bottom->data, 10), "Push failed. Bottom pointer is incorrect");
+}
 
-// 	// Test stack_size
-// 	printf("Stack size: %d\n", get_stack_size(stack));
+Test(stack_implementation, test_pop, .description="Testing pop operation on stack")
+{
+	push_stack(stack, 10);
+	push_stack(stack, 20);
+	push_stack(stack, 30);
 
-//     // Test pop_stack function
-//     int popped_val = pop_stack(stack);
-//     printf("Popped value: %d\n", popped_val);
-//     printf("Stack after popping: \n");
-//     print_stack(stack);
+	int val = pop_stack(stack);
 
-//     // Test free_stack function
-//     free_stack(stack);
-//     printf("Stack after freeing: \n");
-//     print_stack(stack);
-// }
+	cr_assert(eq(val, 30), "Pop incorrect value");
+	cr_assert(eq(stack->top->data, 20), "Incorrect top value after pop");
+	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
+	
+	val = pop_stack(stack);
+	cr_assert(eq(val, 20), "Pop incorrect value");
+	cr_assert(eq(stack->top->data, 10), "Incorrect top value after pop");
+	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
+}
 
+Test(stack_implementation, test_size, .description="Testing size operation on stack")
+{
+	push_stack(stack, 10);
+	push_stack(stack, 20);
+	push_stack(stack, 30);
+
+	cr_assert(eq(get_stack_size(stack), 3), "Return stack size is incorect");
+}

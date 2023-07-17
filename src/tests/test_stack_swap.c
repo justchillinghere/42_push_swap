@@ -1,37 +1,37 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   test_stack_swap.c                                  :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2023/07/07 17:45:40 by luchitel          #+#    #+#             */
-// /*   Updated: 2023/07/11 13:46:45 by luchitel         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_stack_swap.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/17 18:03:40 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/17 18:07:30 by luchitel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include "test_push_swap.h"
+#include "test_push_swap.h"
 
-// void	test_swap()
-// {
-//     t_stack *stack = create_stack();
-//     printf("Stack top: %p\n", stack->top);
+// Initially, stack is 50->40->30->20->10
+static void	setup_stack(void)
+{
+	stack = create_stack();
+	int i = 0;
+	while (i < 5)
+		push_stack(stack, (++i) * 10);
+}
 
-// 	int i = 10;
-// 	while (i < 60)
-// 	{
-// 		push_stack(stack, i);
-// 		i += 10;
-// 	}
-//     printf("Stack after pushing: \n");
-//     print_stack(stack);
+static void	teardown_stack(void)
+{
+	free_stack(stack);
+}
 
-// 	swap_stack(stack);
-// 	printf("Stack after swapping: \n");
-//     print_stack(stack);
+TestSuite(stack_swap, .init=setup_stack, .fini=teardown_stack);
 
-//     // Test free_stack function
-//     free_stack(stack);
-//     printf("Stack after freeing: \n");
-//     print_stack(stack);
-// }
+Test(stack_swap, stack_swap)
+{
+	swap_stack(stack);
+	cr_assert(eq(stack->top->data, 40), "Swap failed. Top pointer is incorrect");
+	cr_assert(eq(stack->top->next->data, 50), "Swap failed. Second node is incorrect");
+	cr_assert(eq(stack->bottom->data, 10), "Swap failed. Bottom pointer is incorrect");
+}

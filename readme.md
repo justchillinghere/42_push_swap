@@ -43,7 +43,14 @@ At the beginning of the program, The stack a contains a random amount of negativ
 ## Test coverage
 
 - [ ] Integrate criterion testing framework
-- [ ] Get test coverage of functions
+- [ ] Get test coverage of stackfunctions:
+  - [x] Push
+  - [x] Pop
+  - [x] Rotate
+  - [x] Reverse rotate
+  - [ ] Swap
+  - [x] Free
+  - [x] Create
 
 ## Algorithm
 

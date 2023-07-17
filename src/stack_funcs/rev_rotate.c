@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:18:29 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/12 14:49:37 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:42:33 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	reverse_rotate_stack(t_stack *stack)
 void rra(t_stack *a)
 {
 	reverse_rotate_stack(a);
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 
 void rrb(t_stack *b)
 {
 	reverse_rotate_stack(b);
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
