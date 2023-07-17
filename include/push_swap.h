@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/14 13:44:32 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/17 20:28:47 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void	reverse_rotate_stack(t_stack *stack);
 void 	rra(t_stack *a);
 void 	rrb(t_stack *b);
 void 	rrr(t_stack *a, t_stack *b);
+
+// Sorting algorithms
+void	sort_three(t_stack *stack);
 
 #endif

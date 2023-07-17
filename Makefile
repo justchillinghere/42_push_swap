@@ -21,38 +21,29 @@ HEADERS := $(addprefix $(INC_DIR)/, \
 				)
 
 SRC_UTILS_DIR := $(SRC_DIR)/utils
-
-SRC_UTILS := $(addprefix $(SRC_UTILS_DIR)/, \
-				input_checks.c	\
-				)
+SRC_UTILS := $(wildcard $(SRC_UTILS_DIR)/*.c)
 
 SRC_STACK_DIR := $(SRC_DIR)/stack_funcs
+SRC_STACK := $(wildcard $(SRC_STACK_DIR)/*.c)
 
-SRC_STACK := $(addprefix $(SRC_STACK_DIR)/, \
-				stack_implementation.c	\
-				swap.c \
-				rotate.c \
-				rev_rotate.c \
-				push_ab.c \
-				)
+SRC_ALGO_DIR := $(SRC_DIR)/algorithms
+SRC_ALGO := $(wildcard $(SRC_ALGO_DIR)/*.c)
 
 SRC_TESTS_DIR := $(SRC_DIR)/tests
-SRC_TESTS := $(addprefix $(SRC_TESTS_DIR)/, \
-				test_stack_impl.c \
-				test_stack_rotate.c \
-				test_stack_swap.c \
-				)
+SRC_TESTS := $(wildcard $(SRC_TESTS_DIR)/*.c)
 
 vpath %.c \
 	$(SRC_DIR) \
 	$(INC_DIR) \
 	$(SRC_UTILS_DIR) \
 	$(SRC_STACK_DIR) \
-	$(SRC_TESTS_DIR)
+	$(SRC_TESTS_DIR) \
+	$(SRC_ALGO_DIR)
 
 SRCS := $(addprefix $(SRC_DIR)/, \
 		$(SRC_STACK) \
 		$(SRC_UTILS) \
+		$(SRC_ALGO) \
 		)
 
 OBJS := $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))

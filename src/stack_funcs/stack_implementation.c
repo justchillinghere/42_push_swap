@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:04:31 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/11 18:49:27 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/17 19:47:40 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_stack(t_stack *stack)
 	current_node = stack->top;
 	while (current_node)
 	{
-		ft_printf("\t|%d|\n", current_node->data);
+		ft_printf("|%d|\n", current_node->data);
 		current_node = current_node->next;
 	}
 }

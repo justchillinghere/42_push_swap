@@ -48,7 +48,7 @@ At the beginning of the program, The stack a contains a random amount of negativ
   - [x] Pop
   - [x] Rotate
   - [x] Reverse rotate
-  - [ ] Swap
+  - [x] Swap
   - [x] Free
   - [x] Create
 
@@ -57,7 +57,7 @@ At the beginning of the program, The stack a contains a random amount of negativ
 First, check if the stack is already sorted. If it is, do nothing. If it's not, then we need to sort it.
 Then, there're sevearal cases to consider:
 
-- [ ] 3 numbers and less
+- [x] 3 numbers and less
 - [ ] 5 numbers and less
 - [ ] 100 numbers and less
 - [ ] 500 numbers and less

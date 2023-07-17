@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/11 13:22:24 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/17 20:36:21 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int main (int argc, char **argv)
 		push_stack(stack_a, ft_atoi(argv[argc - 1]));
 		argc--;
 	}
+	ft_printf("Before sort:\n");
+	print_stack(stack_a);
+	ft_printf("–––\n");
+	sort_three(stack_a);
+	ft_printf("After sort:\n");
 	print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
