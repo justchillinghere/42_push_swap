@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/17 20:28:47 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:03:49 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef struct s_stack
 {
 	t_node	*top;
 	t_node	*bottom;
+	int	min;
+	int	max;
 }	t_stack;
 
 // Stack implementation
 t_stack *create_stack();
-t_node *create_node(int num);
+t_node 	*create_node(int num);
 void	free_stack(t_stack *stack);
 int 	pop_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
@@ -41,7 +43,10 @@ int		is_stack_empty(t_stack *stack);
 int		count_argc(char **argv);
 int		get_stack_size(t_stack *stack);
 int		is_stack_sorted(t_stack *stack);
-int		find_max_stack_value(t_stack *stack);
+int		get_max_stack_value(t_stack *stack);
+int		get_min_stack_value(t_stack *stack);
+void	check_popped_val(t_stack *new_stack, int popped_val);
+void	check_pushed_val(t_stack *new_stack, int popped_val);
 
 // Rules
 void	rotate_stack(t_stack *stack);

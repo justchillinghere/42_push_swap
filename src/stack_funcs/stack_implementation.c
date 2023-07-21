@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:04:31 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/17 19:47:40 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:02:30 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_stack *create_stack()
 	new_stack = malloc(sizeof(t_stack));
 	new_stack->top = NULL;
 	new_stack->bottom = NULL;
+	new_stack->max = 0;
+	new_stack->min = 0;
 	return (new_stack);
 }
 
@@ -47,7 +49,13 @@ void	push_stack(t_stack *stack, int num)
 	new_node->next = stack->top;
 	stack->top = new_node;
 	if (stack->top->next == NULL) // if there's only one element, top and bottom point to the same element
+	{
 		stack->bottom = new_node;
+		stack->max = stack->top->data;
+		stack->min = stack->top->data;
+	}
+	else
+		check_pushed_val(stack, num); // If there're 2 or more elements, check for new min and max
 }
 
 void	print_stack(t_stack *stack)
@@ -72,6 +80,7 @@ int pop_stack(t_stack *stack)
 	pointer = stack->top;
 	deleted_val = pointer->data;
 	stack->top = stack->top->next;
+	check_popped_val(stack, deleted_val);
 	free(pointer);
 	return (deleted_val);
 }
