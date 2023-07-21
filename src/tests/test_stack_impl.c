@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:08:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/21 16:03:07 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:24:19 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,25 @@ Test(stack_implementation, test_push_max,
 	cr_assert(eq(stack->min, 0), "Min has been set incorrectly");
 }
 
-// Test(stack_implementation, test_pop_min, .description="Testing pop operation on stack")
-// {
-// 	push_stack(stack, 10);
-// 	push_stack(stack, 20);
-// 	push_stack(stack, 30);
+Test(stack_implementation, test_pop_min, .description="Testing pop operation on stack")
+{
+	push_stack(stack, 10);
+	push_stack(stack, 20);
+	push_stack(stack, 30);
+	push_stack(stack, -15);
+	push_stack(stack, 0);
 
-// 	int val = pop_stack(stack);
-
-// 	cr_assert(eq(val, 30), "Pop incorrect value");
-// 	cr_assert(eq(stack->top->data, 20), "Incorrect top value after pop");
-// 	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
+	pop_stack(stack); // pop 0
+	cr_assert(eq(stack->max, 30), "(Pop test) Max has been set incorrectly");
+	cr_assert(eq(stack->min, -15), "(Pop test) Min has been set incorrectly");
+	pop_stack(stack); // pop -15
+	cr_assert(eq(stack->max, 30), "(Pop test) Max has been set incorrectly");
+	cr_assert(eq(stack->min, 10), "(Pop test) Min has been set incorrectly");
+	pop_stack(stack);
+	cr_assert(eq(stack->max, 20), "(Pop test) Max has been set incorrectly");
+	cr_assert(eq(stack->min, 10), "(Pop test) Min has been set incorrectly");
+	pop_stack(stack);
+	cr_assert(eq(stack->max, 10), "(Pop test) Max has been set incorrectly");
+	cr_assert(eq(stack->min, 10), "(Pop test) Min has been set incorrectly");
 	
-// 	val = pop_stack(stack);
-// 	cr_assert(eq(val, 20), "Pop incorrect value");
-// 	cr_assert(eq(stack->top->data, 10), "Incorrect top value after pop");
-// 	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
-// }
+}

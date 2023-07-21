@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:41:53 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/17 17:50:41 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:20:38 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "push_swap.h"
 # include "criterion/criterion.h"
 # include "criterion/new/assert.h"
+# include "criterion/logging.h"
 
 static t_stack *stack = NULL;
 

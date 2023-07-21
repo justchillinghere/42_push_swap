@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_max_value.c                                   :+:      :+:    :+:   */
+/*   stack_min_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:35:44 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/21 15:31:04 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:23:33 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	get_min_stack_value(t_stack *stack)
 	int	min_value;
 	t_node	*tmp_node;
 
-	min_value = 0;
+	min_value = stack->top->data;
 	tmp_node = stack->top;
 	while (tmp_node)
 	{
