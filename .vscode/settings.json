@@ -3,6 +3,9 @@
 	"files.associations": {
 		"push_swap.h": "c",
 		"test_push_swap.h": "c",
-		"assert.h": "c"
+		"assert.h": "c",
+		"limits": "c",
+		"ratio": "c",
+		"chrono": "c"
 	}
 }

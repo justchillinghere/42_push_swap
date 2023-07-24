@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/21 16:03:49 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:58:44 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,35 @@
 
 typedef struct s_stack_node 
 {
-	int data;
-	struct s_stack_node *next;
+	int 	data;
+	struct 	s_stack_node *next;
+	int		position;
 } 	t_node;
 
 typedef struct s_stack
 {
-	t_node	*top;
-	t_node	*bottom;
-	int	min;
-	int	max;
+	t_node		*top;
+	t_node		*bottom;
+	int			size;
+	t_node		*min;
+	t_node		*max;
 }	t_stack;
+
+typedef	struct s_cheapest
+{
+	t_node	*cheapest_element;
+	int		ra_count;
+	int		rb_count;
+	int		rra_count;
+	int		rrb_count;
+}	t_cheapest;
+
 
 // Stack implementation
 t_stack *create_stack();
 t_node 	*create_node(int num);
 void	free_stack(t_stack *stack);
-int 	pop_stack(t_stack *stack);
+void 	pop_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	push_stack(t_stack *stack, int num);
 int		is_stack_empty(t_stack *stack);
@@ -43,10 +55,10 @@ int		is_stack_empty(t_stack *stack);
 int		count_argc(char **argv);
 int		get_stack_size(t_stack *stack);
 int		is_stack_sorted(t_stack *stack);
-int		get_max_stack_value(t_stack *stack);
-int		get_min_stack_value(t_stack *stack);
+t_node	*get_max_stack_value(t_stack *stack);
+t_node	*get_min_stack_value(t_stack *stack);
 void	check_popped_val(t_stack *new_stack, int popped_val);
-void	check_pushed_val(t_stack *new_stack, int popped_val);
+void	check_pushed_val(t_stack *stack);
 
 // Rules
 void	rotate_stack(t_stack *stack);
