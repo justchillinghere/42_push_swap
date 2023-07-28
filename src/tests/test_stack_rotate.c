@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 17:41:26 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/17 17:50:21 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:29:24 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,27 @@ Test(stack_rotate, test_reverse_rotate)
 	reverse_rotate_stack(stack);
 	cr_assert(eq(stack->top->data, 20), "Reverse Rotate failed. Top pointer is incorrect");
 	cr_assert(eq(stack->bottom->data, 30), "Reverse Rotate failed. Bottom pointer is incorrect");
+}
+
+
+Test(stack_rotate, test_rotate_min_max)
+{
+	rotate_stack(stack);
+	cr_assert(eq(stack->max->data, 50), "Reverse Rotate failed. Top pointer is incorrect");
+	cr_assert(eq(stack->min->data, 10), "Reverse Rotate failed. Bottom pointer is incorrect");
+	
+	rotate_stack(stack);
+	cr_assert(eq(stack->max->data, 50), "Reverse Rotate failed. Top pointer is incorrect");
+	cr_assert(eq(stack->min->data, 10), "Reverse Rotate failed. Bottom pointer is incorrect");
+}
+
+Test(stack_rotate, test_rev_rotate_min_max)
+{
+	reverse_rotate_stack(stack);
+	cr_assert(eq(stack->max->data, 50), "Reverse Rotate failed. Top pointer is incorrect");
+	cr_assert(eq(stack->min->data, 10), "Reverse Rotate failed. Bottom pointer is incorrect");
+	
+	reverse_rotate_stack(stack);
+	cr_assert(eq(stack->max->data, 50), "Reverse Rotate failed. Top pointer is incorrect");
+	cr_assert(eq(stack->min->data, 10), "Reverse Rotate failed. Bottom pointer is incorrect");
 }

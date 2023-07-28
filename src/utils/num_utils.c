@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_ab.c                                          :+:      :+:    :+:   */
+/*   num_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:43:41 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 17:54:35 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/27 15:16:15 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/27 15:17:18 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_from_stack_to_stack(t_stack *from, t_stack *to)
+int	abs(int value)
 {
-	int		pop_val;
-
-	if(is_stack_empty(from))
-		return;
-	pop_val = pop_stack(from);
-	push_stack(to, pop_val);
+	if (value < 0)
+		return (-1 * value);
+	else
+		return (value);
 }
 
-void pa(t_stack *a, t_stack *b)
+int min(int a, int b)
 {
-	push_from_stack_to_stack(b, a);
-	ft_printf("pa\n");
-}
-
-void pb(t_stack *a, t_stack *b)
-{
-	push_from_stack_to_stack(a, b);
-	ft_printf("pb\n");
+    if (a == b)
+        return (a);
+    else if (a < b)
+        return (a);
+    else
+        return (b);
 }

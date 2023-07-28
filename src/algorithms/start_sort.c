@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_ab.c                                          :+:      :+:    :+:   */
+/*   start_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:43:41 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 17:54:35 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/27 18:10:19 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/27 18:13:16 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_from_stack_to_stack(t_stack *from, t_stack *to)
+void	start_sort(t_stack *stack_a)
 {
-	int		pop_val;
-
-	if(is_stack_empty(from))
-		return;
-	pop_val = pop_stack(from);
-	push_stack(to, pop_val);
-}
-
-void pa(t_stack *a, t_stack *b)
-{
-	push_from_stack_to_stack(b, a);
-	ft_printf("pa\n");
-}
-
-void pb(t_stack *a, t_stack *b)
-{
-	push_from_stack_to_stack(a, b);
-	ft_printf("pb\n");
+	if (stack_a->size <= 3)
+		sort_three(stack_a);
+	else
+		sort_big(stack_a);
 }

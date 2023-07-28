@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_ab.c                                          :+:      :+:    :+:   */
+/*   score_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:43:41 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 17:54:35 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/27 15:22:41 by luchitel          #+#    #+#             */
+/*   Updated: 2023/07/28 15:22:21 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_from_stack_to_stack(t_stack *from, t_stack *to)
+void	set_null_score(t_score *score)
 {
-	int		pop_val;
+	int i;
 
-	if(is_stack_empty(from))
-		return;
-	pop_val = pop_stack(from);
-	push_stack(to, pop_val);
+	i = 0;
+	while (i < 6)
+		score->actions[i++] = 0;
+	score->total_score = 0;
 }
 
-void pa(t_stack *a, t_stack *b)
+void	copy_score(t_score *from, t_score *to)
 {
-	push_from_stack_to_stack(b, a);
-	ft_printf("pa\n");
-}
+	int i;
 
-void pb(t_stack *a, t_stack *b)
-{
-	push_from_stack_to_stack(a, b);
-	ft_printf("pb\n");
+	i = -1;
+	while (++i < 6)
+		to->actions[i] = from->actions[i];
+	to->total_score = from->total_score;
 }

@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:04:31 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 17:00:06 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:07:40 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_node *create_node(int num)
 	node = malloc(sizeof(t_node));
 	node->data = num;
 	node->next = NULL;
-	node->position = 0;
 	return (node);
 }
 
@@ -32,6 +31,8 @@ t_stack *create_stack()
 	new_stack->bottom = NULL;
 	new_stack->max = NULL;
 	new_stack->min = NULL;
+	new_stack->size = 0;
+	new_stack->max_pos = 0;
 	return (new_stack);
 }
 
@@ -54,9 +55,16 @@ void	push_stack(t_stack *stack, int num)
 		stack->bottom = new_node;
 		stack->max = stack->top;
 		stack->min = stack->top;
+		stack->max_pos = 1;
 	}
 	else
 		check_pushed_val(stack); // If there're 2 or more elements, check for new min and max
+	
+	stack->size++;
+	if (stack->max == stack->top)
+		stack->max_pos = 1;
+	else
+		stack->max_pos++;
 }
 
 void	print_stack(t_stack *stack)
@@ -71,18 +79,24 @@ void	print_stack(t_stack *stack)
 	}
 }
 
-void pop_stack(t_stack *stack)
+int pop_stack(t_stack *stack)
 {
 	t_node *pointer;
 	int	deleted_val;
 
 	if (is_stack_empty(stack))
-		return;
+		return (-1);
 	pointer = stack->top;
 	deleted_val = pointer->data;
 	stack->top = stack->top->next;
 	check_popped_val(stack, deleted_val);
 	free(pointer);
+	stack->size--;
+	if (stack->max == stack->top)
+		stack->max_pos = 1;
+	else
+		stack->max_pos--;
+	return (deleted_val);
 }
 
 void	free_stack(t_stack *stack)

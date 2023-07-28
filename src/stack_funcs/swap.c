@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/14 16:57:43 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:32:26 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	swap_stack(t_stack *stack)
 	first->next = second->next;
 	second->next = stack->top;
 	stack->top = second;
+
+	if(stack->top == stack->max)
+		stack->max_pos = 1;
+	else if (stack->top->next == stack->max)
+		stack->max_pos = 2;
 }
 
 void	sa(t_stack *a)

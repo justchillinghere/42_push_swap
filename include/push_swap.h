@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 16:58:44 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:13:32 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # include "ft_printf.h"
 # include "libft.h"
 
+enum	options_names{ra_count, rb_count, rr_count, rra_count, rrb_count, rrr_count};
+enum 	action_options{rr_option, rrr_option, ra_rrb_option, rra_rb_option};
+
 typedef struct s_stack_node 
 {
 	int 	data;
 	struct 	s_stack_node *next;
-	int		position;
 } 	t_node;
 
 typedef struct s_stack
@@ -30,23 +32,21 @@ typedef struct s_stack
 	int			size;
 	t_node		*min;
 	t_node		*max;
+	int			max_pos;
 }	t_stack;
 
-typedef	struct s_cheapest
+typedef	struct s_element_score
 {
-	t_node	*cheapest_element;
-	int		ra_count;
-	int		rb_count;
-	int		rra_count;
-	int		rrb_count;
-}	t_cheapest;
+	int		actions[6];
+	int		total_score;
+}	t_score;
 
 
 // Stack implementation
 t_stack *create_stack();
 t_node 	*create_node(int num);
 void	free_stack(t_stack *stack);
-void 	pop_stack(t_stack *stack);
+int 	pop_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	push_stack(t_stack *stack, int num);
 int		is_stack_empty(t_stack *stack);
@@ -59,6 +59,10 @@ t_node	*get_max_stack_value(t_stack *stack);
 t_node	*get_min_stack_value(t_stack *stack);
 void	check_popped_val(t_stack *new_stack, int popped_val);
 void	check_pushed_val(t_stack *stack);
+int		abs(int value);
+int 	min(int a, int b);
+void	copy_score(t_score *from, t_score *to);
+void	set_null_score(t_score *score);
 
 // Rules
 void	rotate_stack(t_stack *stack);
@@ -81,6 +85,10 @@ void 	rrb(t_stack *b);
 void 	rrr(t_stack *a, t_stack *b);
 
 // Sorting algorithms
+void	start_sort(t_stack *stack_a);
 void	sort_three(t_stack *stack);
+void	sort_big(t_stack *stack_a);
+
+void	find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score);
 
 #endif

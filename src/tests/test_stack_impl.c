@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:08:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 16:59:46 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:52:33 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ Test(stack_implementation, test_pop, .description="Testing pop operation on stac
 	push_stack(stack, 20);
 	push_stack(stack, 30);
 
-	pop_stack(stack);
+	int val = pop_stack(stack);
 
+	cr_assert(eq(val, 30), "Pop incorrect value");
 	cr_assert(eq(stack->top->data, 20), "Incorrect top value after pop");
 	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
 	
-	pop_stack(stack);
+	val = pop_stack(stack);
+	cr_assert(eq(val, 20), "Pop incorrect value");
 	cr_assert(eq(stack->top->data, 10), "Incorrect top value after pop");
 	cr_assert(eq(stack->bottom->data, 10), "Incorrect top value after pop");
 }
