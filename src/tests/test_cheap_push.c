@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:19:20 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/28 16:29:03 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:39:43 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_stack *stack_a;
 static t_stack *stack_b;
 
-static void	setup_stack(void)
+static void	setup_stack_initial(void)
 {
 	stack_a = create_stack();
 	stack_b = create_stack();
@@ -28,9 +28,24 @@ static void	setup_stack(void)
 	push_stack(stack_a, 7);
 	push_stack(stack_a, 2);
 	push_stack(stack_a, 5);
-	// pb(stack_a, stack_b);
-	// pb(stack_a, stack_b);
 }
+
+// static void	setup_stack_case_1(void)
+// {
+// 	stack_a = create_stack();
+// 	stack_b = create_stack();
+
+// 	push_stack(stack_a, 8);
+// 	push_stack(stack_a, 4);
+// 	push_stack(stack_a, 9);
+// 	push_stack(stack_a, 3);
+// 	push_stack(stack_a, 6);
+
+// 	push_stack(stack_b, 2);
+// 	push_stack(stack_b, 5);
+// 	push_stack(stack_b, 7);
+// 	push_stack(stack_b, 1);
+// }
 
 static void	teardown_stack(void)
 {
@@ -39,32 +54,39 @@ static void	teardown_stack(void)
 	ft_printf("Freed\n");
 }
 
-void	print_steps(t_score *score)
+TestSuite(cheap_algo, .init=setup_stack_initial, .fini=teardown_stack);
+
+Test(cheap_algo, test_sort)
 {
-	int	i = 0;
-
-	while (i < 6)
-	{
-		ft_printf("Score action ind #%d is %d\n", i, score->actions[i]);
-		i++;
-	}
-	ft_printf("Total actions: %d\n", score->total_score);
-}
-
-TestSuite(cheap_algo, .init=setup_stack, .fini=teardown_stack);
-
-Test(cheap_algo, test_score_set)
-{
-	t_score	*min_score;
-
-	min_score = malloc(sizeof(t_score));
-	set_null_score(min_score);
-	free(min_score);
-}
-
-Test(cheap_algo, test_cheap)
-{
-
-	// find_cheapest(stack_a, stack_b, min_score);
 	sort_big(stack_a);
 }
+
+// TestSuite(cheap_algo_cases, .init=setup_stack_case_1, .fini=teardown_stack);
+
+// Test(cheap_algo_cases, case_1)
+// {
+// 	t_score *min_score;
+
+
+// 	ft_printf("Stack A before:\n");
+// 	print_stack(stack_a);
+// 	ft_printf("\n--------\n");
+// 	ft_printf("Stack B before:\n");
+// 	print_stack(stack_b);
+// 	ft_printf("\n--------\n");
+// 	min_score = malloc(sizeof(t_score));
+// 	set_null_score(min_score);
+	
+// 	find_cheapest(stack_a, stack_b, min_score);
+// 	// print_score(min_score);
+// 	// move_cheapest(stack_a, stack_b, min_score);
+// 	// print_score(min_score);
+
+// 	// ft_printf("Stack A after:\n");
+// 	// print_stack(stack_a);
+// 	// ft_printf("\n--------\n");
+// 	// ft_printf("Stack B:\n");
+// 	// print_stack(stack_b);
+// 	// ft_printf("\n--------\n");
+// 	free(min_score);
+// }

@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/27 18:13:32 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/28 18:12:58 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		abs(int value);
 int 	min(int a, int b);
 void	copy_score(t_score *from, t_score *to);
 void	set_null_score(t_score *score);
+void	print_score(t_score *score);
 
 // Rules
 void	rotate_stack(t_stack *stack);
@@ -88,6 +89,7 @@ void 	rrr(t_stack *a, t_stack *b);
 void	start_sort(t_stack *stack_a);
 void	sort_three(t_stack *stack);
 void	sort_big(t_stack *stack_a);
+void	move_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *score);
 
 void	find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score);
 
