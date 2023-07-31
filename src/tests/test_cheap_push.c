@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:19:20 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/31 15:39:43 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:56:11 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static void	setup_stack_initial(void)
 	push_stack(stack_a, 5);
 }
 
+static void	teardown_stack(void)
+{
+	free_stack(stack_a);
+	free_stack(stack_b);
+	ft_printf("Freed\n");
+}
+
+TestSuite(cheap_algo, .init=setup_stack_initial, .fini=teardown_stack);
+
+Test(cheap_algo, test_cheap)
+{
+	sort_big(stack_a);
+}
+
 // static void	setup_stack_case_1(void)
 // {
 // 	stack_a = create_stack();
@@ -46,20 +60,6 @@ static void	setup_stack_initial(void)
 // 	push_stack(stack_b, 7);
 // 	push_stack(stack_b, 1);
 // }
-
-static void	teardown_stack(void)
-{
-	free_stack(stack_a);
-	free_stack(stack_b);
-	ft_printf("Freed\n");
-}
-
-TestSuite(cheap_algo, .init=setup_stack_initial, .fini=teardown_stack);
-
-Test(cheap_algo, test_sort)
-{
-	sort_big(stack_a);
-}
 
 // TestSuite(cheap_algo_cases, .init=setup_stack_case_1, .fini=teardown_stack);
 
