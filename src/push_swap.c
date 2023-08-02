@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/27 18:13:42 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:34:29 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,21 @@
 int main (int argc, char **argv)
 {
 	t_stack *stack_a;
+	int		*values_array;
 
 	stack_a = NULL;
-	if (argc == 1 || !argv[1][0])
-		return (1);
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' '); // convert "1 2 3" to "1", "2", "3"
-		argc = count_argc(argv);
-	}
-	else // if argv is already "1" "2" "3" 
-	{
-		argv++;
-		argc--;
-	}
-	stack_a = create_stack();
-	while (argc)
-	{
-		push_stack(stack_a, ft_atoi(argv[argc - 1]));
-		argc--;
-	}
+	argv = get_correct_input_str(&argc, argv);
+	values_array = get_unique_values_array(argc, argv);
+	stack_a = form_init_stack(values_array, argc);
+	free(values_array);
 	ft_printf("Before sort:\n");
 	print_stack(stack_a);
 	ft_printf("–––\n");
-	start_sort(stack_a);
+	if (stack_a->size > 1 && !is_stack_sorted(stack_a))
+		start_sort(stack_a);
 	ft_printf("After sort:\n");
 	print_stack(stack_a);
+	ft_printf("–––\n");
 	free_stack(stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:04:31 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/31 17:44:04 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:57:28 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_stack *create_stack()
 	t_stack	*new_stack;
 
 	new_stack = malloc(sizeof(t_stack));
+	if (!new_stack)
+		return (NULL);
 	new_stack->top = NULL;
 	new_stack->bottom = NULL;
 	new_stack->max = NULL;
