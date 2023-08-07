@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:43:23 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/02 16:32:12 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:37:30 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,24 @@ int	is_format_correct(int argc, char **argv)
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
+			{
+				// ft_printf("HERE: |%c| |%s %d|\n", argv[i][j], argv[i], j);
 				return (ERROR);
+			}
 			if (argv[i][j] == '-' && !(j == 0 && argv[i][1] && ft_isdigit(argv[i][1])))
+			{
+				// ft_printf("HERE: |%c| |%s %d|\n", argv[i][j], argv[i], j);
 				return (ERROR);
+			}
 			j++;
 		}
 		if (!argv[i][0])
+		{
+			// ft_printf("HERE: |%c| |%s %d|\n", argv[i][j], argv[i], j);
 			return (ERROR);
+		}
 		i++;
+		j = 0;
 	}
 	return (OK);
 }

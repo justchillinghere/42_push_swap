@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:26:39 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/31 15:55:20 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:18:00 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ void	find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score)
 		current_elem_score.actions[ra_count] = pos_a - 1;
 		current_elem_score.actions[rra_count] = (stack_a->size - pos_a) + 1;
 		count_place_in_b(tmp_node_a->data, stack_b, &current_elem_score);
+		
 		count_min_steps(&current_elem_score);
-		if ((tmp_node_a == stack_a->top) || (min_score->total_score < current_elem_score.total_score))
+		
+		// ft_printf("Print score for %d:\n", tmp_node_a->data);
+		// print_score(&current_elem_score);
+		if ((tmp_node_a == stack_a->top) || (current_elem_score.total_score < min_score->total_score))
 			copy_score(&current_elem_score, min_score);
 		if (min_score->total_score <= 1)
 			break;
@@ -51,7 +55,7 @@ static void	count_place_in_b(int push_value, t_stack *stack_b, t_score *current_
 
 	tmp_node = stack_b->max;
 	elem_pos = stack_b->max_pos;
-	if (!(push_value > stack_b->max->data) && !(push_value < stack_b->min->data))
+	if ((push_value < stack_b->max->data) && (push_value > stack_b->min->data))
 	{
 		while (push_value < tmp_node->data)
 		{
@@ -77,10 +81,10 @@ static int	find_min_option_index(int options[4])
 	int	i;
 	int min_option_index;
 
-	i = 0;
-	min_option_index = i;
-	min = options[i++];
-	while (i < 4)
+	i = rr_option;
+	min_option_index = rr_option;
+	min = options[i];
+	while (i <= rra_rb_option)
 	{
 		if (options[i] < min)
 		{
@@ -159,6 +163,7 @@ static void	count_min_steps(t_score *score)
 	options[rrr_option] = min(score->actions[rra_count], score->actions[rrb_count]) + abs(score->actions[rra_count] - score->actions[rrb_count]);
 	options[ra_rrb_option] = abs(score->actions[ra_count] + score->actions[rrb_count]);
 	options[rra_rb_option] = abs(score->actions[rra_count] + score->actions[rb_count]);
+
 	
 	min_opt_index = find_min_option_index(options);
 	score->total_score = options[min_opt_index];

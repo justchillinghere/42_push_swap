@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:31:58 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/01 15:41:53 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:50:18 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	move_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *score)
 		{
 			do_action(stack_a, stack_b, i);
 			score->actions[i]--;
+			score->total_score--;
 		}
 		i--;
 	}

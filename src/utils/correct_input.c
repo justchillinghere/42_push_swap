@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:10 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/02 16:51:11 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:35:47 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char **get_correct_input_str(int *argc, char **argv)
 		argv++;
 		(*argc)--;
 	}
+	// ft_printf("HERE\n");
 	if (!is_format_correct(*argc, argv))
 		ft_error();
 	return (argv);

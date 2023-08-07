@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 14:58:00 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/02 14:27:04 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:19:03 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,19 @@
 static void	sort_b_from_a(t_stack *stack_a, t_stack *stack_b, t_score *min_score)
 {
 	find_cheapest(stack_a, stack_b, min_score);
+	// ft_printf("Print score:\n");
+	// print_score(min_score);
 	move_cheapest(stack_a, stack_b, min_score);
+
 	pb(stack_a, stack_b);
+
+	// ft_printf("Stack A after moving:\n");
+	// print_stack(stack_a);
+	// ft_printf("\n--------\n");
+	// ft_printf("Stack B after moving:\n");
+	// print_stack(stack_b);
+	// ft_printf("\n--------\n");
+	
 	set_null_score(min_score);
 }
 
@@ -42,7 +53,9 @@ void	sort_big(t_stack *stack_a)
 		pb(stack_a, stack_b);
 	while (stack_a->size > 3)
 		sort_b_from_a(stack_a, stack_b, min_score);
+
 	sort_three(stack_a);
+
 	while (stack_b->size > 0)
 		sort_a_from_b(stack_a, stack_b, min_score);
 	count_min_to_top(min_score, stack_a);
