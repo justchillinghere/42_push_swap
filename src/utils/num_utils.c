@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:16:15 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/27 15:17:18 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 19:10:51 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	abs(int value)
 		return (value);
 }
 
-int min(int a, int b)
+int	min(int a, int b)
 {
-    if (a == b)
-        return (a);
-    else if (a < b)
-        return (a);
-    else
-        return (b);
+	if (a == b)
+		return (a);
+	else if (a < b)
+		return (a);
+	else
+		return (b);
 }

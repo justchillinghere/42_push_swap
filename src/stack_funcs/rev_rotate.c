@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:18:29 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 23:31:37 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 19:07:37 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	reverse_rotate_stack(t_stack *stack)
 	t_node	*current_node;
 
 	if (is_stack_empty(stack) || stack->top->next == NULL)
-		return;
+		return ;
 	current_node = stack->top;
 	while (current_node->next->next)
 		current_node = current_node->next;
@@ -27,26 +27,25 @@ void	reverse_rotate_stack(t_stack *stack)
 	stack->bottom = current_node;
 	new_top->next = stack->top;
 	stack->top = new_top;
-
-	if(stack->top == stack->max)
+	if (stack->top == stack->max)
 		stack->max_pos = 1;
 	else
 		stack->max_pos++;
 }
 
-void rra(t_stack *a)
+void	rra(t_stack *a)
 {
 	reverse_rotate_stack(a);
 	ft_printf("rra\n");
 }
 
-void rrb(t_stack *b)
+void	rrb(t_stack *b)
 {
 	reverse_rotate_stack(b);
 	ft_printf("rrb\n");
 }
 
-void rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);

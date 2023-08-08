@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:50:40 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/31 17:44:09 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 19:06:39 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	swap_stack(t_stack *stack)
 {
-	// Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
 	t_node	*first;
 	t_node	*second;
 
 	first = stack->top;
 	second = stack->top->next;
-	if(!(stack->top) || !(stack->top->next))
-		return;
+	if (!(stack->top) || !(stack->top->next))
+		return ;
 	first->next = second->next;
 	second->next = stack->top;
 	stack->top = second;
-
-	if(stack->top == stack->max)
+	if (stack->top == stack->max)
 		stack->max_pos = 1;
 	else if (stack->top->next == stack->max)
 		stack->max_pos = 2;
@@ -44,7 +42,7 @@ void	sb(t_stack *b)
 	ft_printf("sb\n");
 }
 
-void ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b)
 {
 	swap_stack(a);
 	swap_stack(b);

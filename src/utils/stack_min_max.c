@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:35:44 by luchitel          #+#    #+#             */
-/*   Updated: 2023/07/24 23:06:44 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:51:24 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_pushed_val(t_stack *stack)
 void	check_popped_val(t_stack *new_stack, int popped_val)
 {
 	if (is_stack_empty(new_stack))
-		return;
+		return ;
 	if (popped_val == new_stack->max->data)
 		new_stack->max = get_max_stack_value(new_stack);
 	else if (popped_val == new_stack->min->data)

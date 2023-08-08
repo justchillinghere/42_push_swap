@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:31:58 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 16:50:18 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:48:09 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	do_action(t_stack *stack_a, t_stack *stack_b, int action_index)
 
 void	move_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *score)
 {
-	int i;
-	
+	int	i;
+
 	i = rrr_count;
 	while (i >= 0)
 	{
@@ -64,7 +64,7 @@ int	find_stack_min_pos(t_stack *stack)
 		return (stack->max_pos + 1);
 }
 
-void transform_rotations_ba(t_score *score)
+void	transform_rotations_ba(t_score *score)
 {
 	if (score->actions[ra_count] > score->actions[rra_count])
 		score->actions[ra_count] = 0;
@@ -72,13 +72,14 @@ void transform_rotations_ba(t_score *score)
 		score->actions[rra_count] = 0;
 }
 
-void	count_place_in_stack(int push_value, t_stack *stack, t_score *current_score)
+void	count_place_in_stack(int push_value,
+			t_stack *stack,
+			t_score *current_score)
 {
-	int	elem_pos;
+	int		elem_pos;
 	t_node	*tmp_node;
 
 	tmp_node = stack->min;
-	// elem_pos is min now
 	elem_pos = find_stack_min_pos(stack);
 	if (!(push_value > stack->max->data) && !(push_value < stack->min->data))
 	{

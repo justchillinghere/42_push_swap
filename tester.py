@@ -4,7 +4,7 @@ import random
 def generate_unique_integers():
     min_limit = -1000
     max_limit = 1000
-    num_integers = 30
+    num_integers = 100
 
     # Generate random unique integers using a set to ensure uniqueness
     unique_integers = set()

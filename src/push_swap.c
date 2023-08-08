@@ -6,15 +6,15 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 18:23:55 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:53:05 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 	int		*values_array;
 
 	stack_a = NULL;
@@ -22,16 +22,8 @@ int main (int argc, char **argv)
 	values_array = get_unique_values_array(argc, argv);
 	stack_a = form_init_stack(values_array, argc);
 	free(values_array);
-	// ft_printf("Before sort:\n");
-	// print_stack(stack_a);
-	// ft_printf("–––\n");
 	if (stack_a->size > 1 && !is_stack_sorted(stack_a))
 		start_sort(stack_a);
-	if (!is_stack_sorted(stack_a))
-		ft_printf("––––––NOT SORTED––––––\n");
-	// ft_printf("After sort:\n");
-	// print_stack(stack_a);
-	// ft_printf("–––\n");
 	free_stack(stack_a);
 	return (0);
 }

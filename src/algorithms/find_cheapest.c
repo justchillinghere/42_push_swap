@@ -6,23 +6,25 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:26:39 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 18:18:00 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:52:38 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void			find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score);
-static void		count_place_in_b(int push_value, t_stack *stack_b, t_score *current_score);
-static int		find_min_option_index(int options[4]);
-static void 	tranform_one_dir_rotate(t_score *, int);
-static void		transform_two_dir_rotate(t_score *, int);
-static void		count_min_steps(t_score *score);
+void		find_cheapest(t_stack *stack_a, t_stack *stack_b,
+				t_score *min_score);
+static void	count_place_in_b(int push_value, t_stack *stack_b,
+				t_score *current_score);
+static int	find_min_option_index(int options[4]);
+static void	tranform_one_dir_rotate(t_score *score, int option_num);
+static void	transform_two_dir_rotate(t_score *score, int option_num);
+static void	count_min_steps(t_score *score);
 
 void	find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score)
 {
-	int	pos_a;
-	t_score current_elem_score;
+	int		pos_a;
+	t_score	current_elem_score;
 	t_node	*tmp_node_a;
 
 	pos_a = 1;
@@ -33,24 +35,22 @@ void	find_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *min_score)
 		current_elem_score.actions[ra_count] = pos_a - 1;
 		current_elem_score.actions[rra_count] = (stack_a->size - pos_a) + 1;
 		count_place_in_b(tmp_node_a->data, stack_b, &current_elem_score);
-		
 		count_min_steps(&current_elem_score);
-		
-		// ft_printf("Print score for %d:\n", tmp_node_a->data);
-		// print_score(&current_elem_score);
-		if ((tmp_node_a == stack_a->top) || (current_elem_score.total_score < min_score->total_score))
+		if ((tmp_node_a == stack_a->top)
+			|| (current_elem_score.total_score < min_score->total_score))
 			copy_score(&current_elem_score, min_score);
 		if (min_score->total_score <= 1)
-			break;
+			break ;
 		set_null_score(&current_elem_score);
 		tmp_node_a = tmp_node_a->next;
 		pos_a++;
 	}
 }
 
-static void	count_place_in_b(int push_value, t_stack *stack_b, t_score *current_score)
+static void	count_place_in_b(int push_value, t_stack *stack_b,
+		t_score *current_score)
 {
-	int	elem_pos;
+	int		elem_pos;
 	t_node	*tmp_node;
 
 	tmp_node = stack_b->max;
@@ -79,7 +79,7 @@ static int	find_min_option_index(int options[4])
 {
 	int	min;
 	int	i;
-	int min_option_index;
+	int	min_option_index;
 
 	i = rr_option;
 	min_option_index = rr_option;
@@ -96,7 +96,7 @@ static int	find_min_option_index(int options[4])
 	return (min_option_index);
 }
 
-static void tranform_one_dir_rotate(t_score *score, int option_num)
+static void	tranform_one_dir_rotate(t_score *score, int option_num)
 {
 	int	common_rotate_index;
 	int	ind_delete;
@@ -108,7 +108,8 @@ static void tranform_one_dir_rotate(t_score *score, int option_num)
 		common_rotate_index = rr_count;
 	else if (option_num == rrr_option)
 		common_rotate_index = rrr_count;
-	while (score->actions[common_rotate_index - 1] && score->actions[common_rotate_index - 2])
+	while (score->actions[common_rotate_index - 1]
+		&& score->actions[common_rotate_index - 2])
 	{
 		score->actions[common_rotate_index]++;
 		score->actions[common_rotate_index - 1]--;
@@ -124,7 +125,7 @@ static void tranform_one_dir_rotate(t_score *score, int option_num)
 
 static void	transform_two_dir_rotate(t_score *score, int option_num)
 {
-	int i;
+	int	i;
 	int	op1;
 	int	op2;
 
@@ -157,14 +158,17 @@ Then I form steps according to the optimal strategy
 static void	count_min_steps(t_score *score)
 {
 	int	options[4];
-	int min_opt_index;
-	
-	options[rr_option] = min(score->actions[ra_count], score->actions[rb_count]) + abs(score->actions[ra_count] - score->actions[rb_count]);
-	options[rrr_option] = min(score->actions[rra_count], score->actions[rrb_count]) + abs(score->actions[rra_count] - score->actions[rrb_count]);
-	options[ra_rrb_option] = abs(score->actions[ra_count] + score->actions[rrb_count]);
-	options[rra_rb_option] = abs(score->actions[rra_count] + score->actions[rb_count]);
+	int	min_opt_index;
 
-	
+	options[rr_option] = min(score->actions[ra_count], score->actions[rb_count])
+		+ abs(score->actions[ra_count] - score->actions[rb_count]);
+	options[rrr_option] = min(score->actions[rra_count],
+			score->actions[rrb_count]) + abs(score->actions[rra_count]
+			- score->actions[rrb_count]);
+	options[ra_rrb_option] = abs(score->actions[ra_count]
+			+ score->actions[rrb_count]);
+	options[rra_rb_option] = abs(score->actions[rra_count]
+			+ score->actions[rb_count]);
 	min_opt_index = find_min_option_index(options);
 	score->total_score = options[min_opt_index];
 	if (min_opt_index == rr_option || min_opt_index == rrr_option)
