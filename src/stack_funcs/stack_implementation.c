@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:04:31 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 11:05:16 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:25:05 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	free_stack(t_stack *stack)
 {
 	while (!is_stack_empty(stack))
 		pop_stack(stack);
+	free(stack);
 }

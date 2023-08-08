@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 14:02:05 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 16:31:16 by luchitel         ###   ########.fr       */
+/*   Created: 2023/08/08 16:37:56 by luchitel          #+#    #+#             */
+/*   Updated: 2023/08/08 17:27:30 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_heap_argv(char **argv, int argc)
 {
-	t_stack	*stack_a;
-	int		*values_array;
+	int	i;
 
-	stack_a = NULL;
-	argv = get_correct_input_str(&argc, argv);
-	values_array = get_unique_values_array(argc, argv);
-	stack_a = form_init_stack(values_array, argc);
-	free(values_array);
-	if (stack_a->size > 1 && !is_stack_sorted(stack_a))
-		start_sort(stack_a);
-	free_stack(stack_a);
-	return (0);
+	i = 0;
+	while (i <= argc)
+		free(argv[i++]);
+	free(argv);
 }

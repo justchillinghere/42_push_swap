@@ -56,7 +56,7 @@ CFLAGS := -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(LIBFT_FILE) $(HEADERS) $(OBJS) $(MAIN_OBJ) $(TEST_OBJ)
-	$(CC) $(CFLAGS) -I$(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(OBJS) $(MAIN_OBJ)
+	$(CC) $(CFLAGS) -I$(INC_DIR) $(LIBFT_INC_FLAGS) $(LIBFT_LIB_FLAGS) $(OBJS) $(MAIN_OBJ) -o $(NAME)
 
 $(OBJS_DIR)/%.o : %.c
 	$(info $(shell mkdir -p $(OBJS_DIR)))

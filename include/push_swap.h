@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 12:17:45 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:40:15 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ void					copy_score(t_score *from, t_score *to);
 void					set_null_score(t_score *score);
 void					ft_error(void);
 void					print_score(t_score *score);
+void					free_data_error_in_value(int *arr,
+							char *value_str,
+							char **argv,
+							int argc);
+void					free_heap_argv(char **argv, int argc);
 
 // Rules
 void					rotate_stack(t_stack *stack);

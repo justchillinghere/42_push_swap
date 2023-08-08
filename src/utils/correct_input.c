@@ -6,28 +6,51 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:10 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 10:51:01 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:26:36 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+char	**get_correct_argv_on_heap(int *argc, char **argv)
+{
+	int		i;
+	char	**heap_argv;
+
+	i = 0;
+	argv++;
+	(*argc)--;
+	heap_argv = (char **) malloc((*argc + 1) * sizeof(char *));
+	if (!heap_argv)
+		ft_error();
+	while (i < *argc)
+	{
+		heap_argv[i] = ft_strdup(argv[i]);
+		i++;
+	}
+	argv[i] = 0;
+	return (heap_argv);
+}
+
 char	**get_correct_input_str(int *argc, char **argv)
 {	
 	if (*argc == 1 || !argv[1][0])
-		ft_error();
-	if (*argc == 2)
+		exit(0);
+	if (*argc == 2 && ft_strlen(argv[1]) > 1)
 	{
 		argv = ft_split(argv[1], ' ');
 		*argc = count_argc(argv);
 	}
 	else
 	{
-		argv++;
-		(*argc)--;
+		argv = get_correct_argv_on_heap(argc, argv);
+		*argc = count_argc(argv);
 	}
 	if (!is_format_correct(*argc, argv))
+	{
+		free_heap_argv(argv, *argc);
 		ft_error();
+	}
 	return (argv);
 }
 
@@ -51,7 +74,7 @@ int	*get_unique_values_array(int argc, char **argv)
 	int		*arr;
 	int		i;
 	int		value;
-	int		len;
+	char	*value_str;
 
 	i = 0;
 	arr = (int *) malloc(argc * sizeof(int));
@@ -60,15 +83,13 @@ int	*get_unique_values_array(int argc, char **argv)
 	while (i < argc)
 	{
 		value = ft_atoi(argv[i]);
-		len = ft_strlen(argv[i]);
-		if (ft_strncmp(argv[i], ft_itoa(value), len) != 0
+		value_str = ft_itoa(value);
+		if (ft_strncmp(argv[i], value_str, ft_strlen(argv[i])) != 0
 			|| arr_has_value(arr, i, value))
-		{
-			free(arr);
-			ft_error();
-		}
-		arr[i] = value;
-		i++;
+			free_data_error_in_value(arr, value_str, argv, argc);
+		free(value_str);
+		arr[i++] = value;
 	}
+	free_heap_argv(argv, argc);
 	return (arr);
 }
