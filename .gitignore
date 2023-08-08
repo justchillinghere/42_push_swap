@@ -1,3 +1,6 @@
 .DS_Store
 obj
 *.o
+*.py
+*.txt
+*.sh

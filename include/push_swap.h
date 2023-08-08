@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 11:39:40 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:17:45 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int						min(int a, int b);
 void					copy_score(t_score *from, t_score *to);
 void					set_null_score(t_score *score);
 void					ft_error(void);
+void					print_score(t_score *score);
 
 // Rules
 void					rotate_stack(t_stack *stack);

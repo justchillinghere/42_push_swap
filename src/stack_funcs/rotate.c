@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:10:20 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 19:08:12 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:00:43 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	rotate_stack(t_stack *stack)
 	stack->bottom->next = NULL;
 	if (stack->top == stack->max)
 		stack->max_pos = 1;
+	else if (stack->bottom == stack->max)
+		stack->max_pos = stack->size;
 	else
 		stack->max_pos--;
 }

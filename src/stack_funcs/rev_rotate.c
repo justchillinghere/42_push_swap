@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:18:29 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 19:07:37 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:02:25 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	reverse_rotate_stack(t_stack *stack)
 	stack->top = new_top;
 	if (stack->top == stack->max)
 		stack->max_pos = 1;
+	else if (stack->bottom == stack->max)
+		stack->max_pos = stack->size;
 	else
 		stack->max_pos++;
 }
