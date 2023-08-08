@@ -17,7 +17,6 @@ INC_DIR := include
 
 HEADERS := $(addprefix $(INC_DIR)/, \
 				push_swap.h \
-				test_push_swap.h \
 				)
 
 SRC_UTILS_DIR := $(SRC_DIR)/utils

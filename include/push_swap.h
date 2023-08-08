@@ -6,7 +6,7 @@
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 12:09:57 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/07 18:47:35 by luchitel         ###   ########.fr       */
+/*   Updated: 2023/08/08 11:39:40 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,7 @@ int						abs(int value);
 int						min(int a, int b);
 void					copy_score(t_score *from, t_score *to);
 void					set_null_score(t_score *score);
-void					print_score(t_score *score);
 void					ft_error(void);
-
-// Sorting utils
-void					move_cheapest(t_stack *stack_a, t_stack *stack_b,
-							t_score *score);
-void					count_min_to_top(t_score *score, t_stack *stack);
-void					transform_rotations_ba(t_score *score);
-int						find_stack_min_pos(t_stack *stack);
-void					count_place_in_stack(int push_value, t_stack *stack,
-							t_score *current_score);
 
 // Rules
 void					rotate_stack(t_stack *stack);
@@ -126,8 +116,27 @@ void					sort_three(t_stack *stack);
 void					sort_big(t_stack *stack_a);
 void					move_cheapest(t_stack *stack_a, t_stack *stack_b,
 							t_score *score);
-
+// Sort b from a utils
+void					sort_b_from_a(t_stack *stack_a,
+							t_stack *stack_b, t_score *min_score);
 void					find_cheapest(t_stack *stack_a, t_stack *stack_b,
 							t_score *min_score);
+void					count_place_in_b(int push_value, t_stack *stack_b,
+							t_score *current_score);
+int						find_min_option_index(int options[4]);
+void					tranform_one_dir_rotate(t_score *score,
+							int option_num);
+void					transform_two_dir_rotate(t_score *score,
+							int option_num);
+void					count_min_steps(t_score *score);
+
+// Utils for sorting a from b
+void					sort_a_from_b(t_stack *stack_a,
+							t_stack *stack_b, t_score *min_score);
+void					count_min_to_top(t_score *score, t_stack *stack);
+void					transform_rotations_ba(t_score *score);
+int						find_stack_min_pos(t_stack *stack);
+void					count_place_in_stack(int push_value, t_stack *stack,
+							t_score *current_score);
 
 #endif

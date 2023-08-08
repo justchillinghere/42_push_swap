@@ -1,48 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   big_sort_ab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luchitel <luchitel@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:31:58 by luchitel          #+#    #+#             */
-/*   Updated: 2023/08/08 10:48:09 by luchitel         ###   ########.fr       */
+/*   Created: 2023/07/21 14:58:00 by luchitel          #+#    #+#             */
+/*   Updated: 2023/08/08 11:22:13 by luchitel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	do_action(t_stack *stack_a, t_stack *stack_b, int action_index)
+void	sort_a_from_b(t_stack *stack_a,
+				t_stack *stack_b, t_score *min_score)
 {
-	if (action_index == ra_count)
-		ra(stack_a);
-	else if (action_index == rb_count)
-		rb(stack_b);
-	else if (action_index == rr_count)
-		rr(stack_a, stack_b);
-	else if (action_index == rra_count)
-		rra(stack_a);
-	else if (action_index == rrb_count)
-		rrb(stack_b);
-	else
-		rrr(stack_a, stack_b);
-}
-
-void	move_cheapest(t_stack *stack_a, t_stack *stack_b, t_score *score)
-{
-	int	i;
-
-	i = rrr_count;
-	while (i >= 0)
-	{
-		while (score->actions[i] > 0)
-		{
-			do_action(stack_a, stack_b, i);
-			score->actions[i]--;
-			score->total_score--;
-		}
-		i--;
-	}
+	count_place_in_stack(stack_b->top->data, stack_a, min_score);
+	transform_rotations_ba(min_score);
+	move_cheapest(stack_a, stack_b, min_score);
+	pa(stack_a, stack_b);
+	set_null_score(min_score);
 }
 
 void	count_min_to_top(t_score *score, t_stack *stack)
